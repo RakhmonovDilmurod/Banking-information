@@ -10,8 +10,7 @@
 	{
 		"commands" : 
 		[
-			"add_executable",
-			"target_link_libraries"
+			"add_executable"
 		],
 		"files" : 
 		[
@@ -27,12 +26,6 @@
 				"file" : 0,
 				"line" : 7,
 				"parent" : 0
-			},
-			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 9,
-				"parent" : 0
 			}
 		]
 	},
@@ -45,19 +38,12 @@
 					"fragment" : "-g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk"
 				}
 			],
-			"includes" : 
-			[
-				{
-					"backtrace" : 2,
-					"path" : "/Users/user/Documents/GitHub/Banking-information/nlohmann_json/include"
-				}
-			],
 			"language" : "CXX",
 			"languageStandard" : 
 			{
 				"backtraces" : 
 				[
-					2
+					1
 				],
 				"standard" : "20"
 			},

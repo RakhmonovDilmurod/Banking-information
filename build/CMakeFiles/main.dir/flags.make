@@ -4,7 +4,7 @@
 # compile CXX with /opt/homebrew/bin/aarch64-apple-darwin22-g++-13
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/user/Documents/GitHub/Banking-information/nlohmann_json/include
+CXX_INCLUDES = 
 
 CXX_FLAGSarm64 = -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk
 
