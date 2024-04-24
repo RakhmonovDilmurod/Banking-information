@@ -228,15 +228,6 @@ CMakeFiles/main.dir/main.cpp.o: \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/stl_vector.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/stl_bvector.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/vector.tcc \
- /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/map \
- /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/stl_tree.h \
- /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/ext/aligned_buffer.h \
- /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/node_handle.h \
- /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/stl_map.h \
- /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/stl_multimap.h \
- /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/erase_if.h \
- /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/sstream \
- /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/sstream.tcc \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/iomanip \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/locale \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/locale_facets_nonio.h \
@@ -246,6 +237,8 @@ CMakeFiles/main.dir/main.cpp.o: \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/locale_facets_nonio.tcc \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/locale_conv.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/quoted_string.h \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/sstream \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/sstream.tcc \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/cmath \
  /opt/homebrew/Cellar/gcc/13.2.0/lib/gcc/current/gcc/aarch64-apple-darwin22/13/include-fixed/math.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/specfun.h \
@@ -262,6 +255,7 @@ CMakeFiles/main.dir/main.cpp.o: \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/tr1/poly_hermite.tcc \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/tr1/poly_laguerre.tcc \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/tr1/riemann_zeta.tcc \
+ /Users/user/Documents/GitHub/Banking-information/nlohmann_json/include/nlohmann/json.hpp \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/algorithm \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/stl_algo.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/algorithmfwd.h \
@@ -272,14 +266,16 @@ CMakeFiles/main.dir/main.cpp.o: \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/ranges_algobase.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/pstl/glue_algorithm_defs.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/pstl/execution_defs.h \
- /Users/user/Documents/GitHub/Banking-information/nlohmann_json/include/nlohmann/json.hpp \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/functional \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/std_function.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/unordered_map \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/unordered_map.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/hashtable.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/hashtable_policy.h \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/ext/aligned_buffer.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/enable_special_members.h \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/node_handle.h \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/erase_if.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/array \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/iterator \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/stream_iterator.h \
@@ -307,6 +303,10 @@ CMakeFiles/main.dir/main.cpp.o: \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/forward_list \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/forward_list.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/forward_list.tcc \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/map \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/stl_tree.h \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/stl_map.h \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/stl_multimap.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/valarray \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/valarray_array.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/valarray_array.tcc \
@@ -382,4 +382,7 @@ CMakeFiles/main.dir/main.cpp.o: \
  /Users/user/Documents/GitHub/Banking-information/nlohmann_json/include/nlohmann/ordered_map.hpp \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/any \
  /Users/user/Documents/GitHub/Banking-information/nlohmann_json/include/nlohmann/detail/macro_unscope.hpp \
- /Users/user/Documents/GitHub/Banking-information/nlohmann_json/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
+ /Users/user/Documents/GitHub/Banking-information/nlohmann_json/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/set \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/stl_set.h \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/stl_multiset.h
