@@ -1,0 +1,5 @@
+/Users/user/Documents/GitHub/Banking-information/build/CMakeFiles/main.dir
+/Users/user/Documents/GitHub/Banking-information/build/CMakeFiles/edit_cache.dir
+/Users/user/Documents/GitHub/Banking-information/build/CMakeFiles/rebuild_cache.dir
+/Users/user/Documents/GitHub/Banking-information/build/nlohmann_json/CMakeFiles/edit_cache.dir
+/Users/user/Documents/GitHub/Banking-information/build/nlohmann_json/CMakeFiles/rebuild_cache.dir
