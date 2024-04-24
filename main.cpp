@@ -173,6 +173,72 @@ void displayCreditContractsByBorrower(const vector<CreditContract>& contracts, c
         displayCreditContract(contract);
     }
 }
+CreditContract createNewCreditContract() {
+    int id, bankId, borrowerId, countOfMonth, bankNameLength, bankAddressLength, firstNameLength, lastNameLength, dateOfBirthLength, passportNumberLength;
+    double amount, percent;
+    string type, carModel, carBrand, vin, addressOfObject, universityName, universityAddress;
+    string bankName, bankAddress, firstName, lastName, dateOfBirth, passportNumber;
+
+    cout << "Enter the credit contract details:" << endl;
+    cout << "ID: ";
+    cin >> id;
+    cout << "Amount: ";
+    cin >> amount;
+    cout << "Count of Month: ";
+    cin >> countOfMonth;
+    cout << "Percent: ";
+    cin >> percent;
+    cout << "Type: ";
+    cin >> type;
+    cout << "Car Model: ";
+    cin >> carModel;
+    cout << "Car Brand: ";
+    cin >> carBrand;
+    cout << "VIN: ";
+    cin >> vin;
+    cout << "Address of Object: ";
+    cin >> addressOfObject;
+    cout << "University Name: ";
+    cin >> universityName;
+    cout << "University Address: ";
+    cin >> universityAddress;
+    cout << "Bank ID: ";
+    cin >> bankId;
+    cout << "Bank Name Length: ";
+    cin >> bankNameLength;
+    getline(cin, bankName);
+    getline(cin, bankName, ' ');
+    bankName.resize(bankNameLength, ' ');
+    cout << "Bank Address Length: ";
+    cin >> bankAddressLength;
+    getline(cin, bankAddress);
+    bankAddress.resize(bankAddressLength, ' ');
+    cout << "Borrower ID: ";
+    cin >> borrowerId;
+    cout << "First Name Length: ";
+    cin >> firstNameLength;
+    getline(cin, firstName);
+    firstName.resize(firstNameLength, ' ');
+    cout << "Last Name Length: ";
+    cin >> lastNameLength;
+    getline(cin, lastName);
+    lastName.resize(lastNameLength, ' ');
+    cout << "Date of Birth Length: ";
+    cin >> dateOfBirthLength;
+    getline(cin, dateOfBirth);
+    dateOfBirth.resize(dateOfBirthLength, ' ');
+    cout << "Passport Number Length: ";
+    cin >> passportNumberLength;
+    getline(cin, passportNumber);
+    passportNumber.resize(passportNumberLength, ' ');
+
+    Bank bank(bankId, bankName, bankAddress);
+    Borrower borrower(borrowerId, firstName, lastName, dateOfBirth, passportNumber);
+
+    CreditContract contract(id, amount, countOfMonth, percent, type, bank, borrower, carModel, carBrand, vin, addressOfObject, 0, universityName, universityAddress);
+
+    return contract;
+}
 
 double calculateMonthlyAnnuityPayment(const CreditContract& contract) {
     double monthlyInterestRate = contract.percent / 12 / 100;
@@ -218,7 +284,8 @@ int main() {
             cin >> firstName;
             displayCreditContractsByBorrower(contracts, lastName, firstName);
         } else if (choice == 6) {
-            // Add a new credit contract
+          CreditContract newContract = createNewCreditContract();
+          contracts.push_back(newContract);
         } else if (choice == 7) {
             int id;
             cout << "Enter the ID of the credit contract: ";
