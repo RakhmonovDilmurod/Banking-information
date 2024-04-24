@@ -1,7 +1,7 @@
 [
 {
   "directory": "/Users/user/Documents/GitHub/Banking-information/build",
-  "command": "/opt/homebrew/bin/aarch64-apple-darwin22-g++-13   -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -o CMakeFiles/main.dir/main.cpp.o -c /Users/user/Documents/GitHub/Banking-information/main.cpp",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin22-g++-13  -I/Users/user/Documents/GitHub/Banking-information/nlohmann_json/include -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -o CMakeFiles/main.dir/main.cpp.o -c /Users/user/Documents/GitHub/Banking-information/main.cpp",
   "file": "/Users/user/Documents/GitHub/Banking-information/main.cpp",
   "output": "CMakeFiles/main.dir/main.cpp.o"
 }

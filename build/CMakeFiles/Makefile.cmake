@@ -13,24 +13,32 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/CMakeGenericSystem.cmake"
   "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake"
   "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake"
+  "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/CMakePackageConfigHelpers.cmake"
   "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake"
   "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake"
   "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/Compiler/GNU-C.cmake"
   "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/Compiler/GNU-CXX.cmake"
   "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/Compiler/GNU.cmake"
+  "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/ExternalProject.cmake"
   "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/ExternalProject/shared_internal_commands.cmake"
   "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/FetchContent.cmake"
+  "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/GNUInstallDirs.cmake"
   "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/Platform/Apple-GNU-C.cmake"
   "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/Platform/Apple-GNU-CXX.cmake"
   "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/Platform/Apple-GNU.cmake"
   "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/Platform/Darwin-Initialize.cmake"
   "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/Platform/Darwin.cmake"
   "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/Platform/UnixPaths.cmake"
+  "/System/Volumes/Data/Applications/CMake.app/Contents/share/cmake-3.29/Modules/WriteBasicConfigVersionFile.cmake"
   "/Users/user/Documents/GitHub/Banking-information/CMakeLists.txt"
   "CMakeFiles/3.29.0-rc4/CMakeCCompiler.cmake"
   "CMakeFiles/3.29.0-rc4/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.29.0-rc4/CMakeSystem.cmake"
+  "/Users/user/Documents/GitHub/Banking-information/nlohmann_json/CMakeLists.txt"
+  "/Users/user/Documents/GitHub/Banking-information/nlohmann_json/cmake/config.cmake.in"
+  "/Users/user/Documents/GitHub/Banking-information/nlohmann_json/cmake/nlohmann_jsonConfigVersion.cmake.in"
+  "/Users/user/Documents/GitHub/Banking-information/nlohmann_json/cmake/pkg-config.pc.in"
   )
 
 # The corresponding makefile is:
@@ -42,6 +50,10 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "nlohmann_json/nlohmann_json.pc"
+  "nlohmann_json/nlohmann_jsonConfigVersion.cmake"
+  "nlohmann_json/nlohmann_jsonConfig.cmake"
+  "nlohmann_json/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:

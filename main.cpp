@@ -7,7 +7,9 @@
 #include <iomanip>
 #include<cmath>
 #include <algorithm>
+#include <nlohmann/json.hpp>
 
+using json = nlohmann::json;
 using namespace std;
 
 struct Bank {
@@ -33,6 +35,7 @@ struct CreditContract {
     double amount;
     int countOfMonth;
     double percent;
+    double square;
     string type;
     Bank bank;
     Borrower borrower;
@@ -40,11 +43,10 @@ struct CreditContract {
     string carBrand;
     string vin;
     string addressOfObject;
-    double square;
     string universityName;
     string universityAddress;
 
-    CreditContract(int i = 0, double a = 0, int com = 0, double p = 0, const string& t = "", const Bank& b = Bank(), const Borrower& bo = Borrower(), const string& cm = "", const string& cb = "", const string& v = "", const string& ao = "", double s = 0, const string& un = "", const string& ua = "") : id(i), amount(a), countOfMonth(com), percent(p), type(t), bank(b), borrower(bo), carModel(cm), carBrand(cb), vin(v), addressOfObject(ao), square(s), universityName(un), universityAddress(ua) {}
+    CreditContract(int i = 0, double a = 0, int com = 0, double p = 0, const string& t = "", const Bank& b = Bank(), const Borrower& bo = Borrower(), const string& cm = "", const string& cb = "", const string& v = "", const string& ao = "", double s = 0.0, const string& un = "", const string& ua = "") : id(i), amount(a), countOfMonth(com), percent(p), type(t), bank(b), borrower(bo), carModel(cm), carBrand(cb), vin(v), addressOfObject(ao), square(s), universityName(un), universityAddress(ua) {}
 };
 
 vector<CreditContract> readCreditContractsFromFile(const string& filename) {
@@ -52,72 +54,101 @@ vector<CreditContract> readCreditContractsFromFile(const string& filename) {
     ifstream file(filename);
 
     if (file.is_open()) {
-        string line;
-        while (getline(file, line)) {
-            istringstream iss(line);
+        json j;
+        file >> j;
+
+        for (auto& el : j) {
             int id, countOfMonth;
-            double amount, percent;
+            double amount, percent, square;
             string type, carModel, carBrand, vin, addressOfObject, universityName, universityAddress;
-            getline(iss, type, ',');
-            type.erase(remove(type.begin(), type.end(), '\"'), type.end());
-            getline(iss, carModel, ',');
-            carModel.erase(remove(carModel.begin(), carModel.end(), '\"'), carModel.end());
-            getline(iss, carBrand, ',');
-            carBrand.erase(remove(carBrand.begin(), carBrand.end(), '\"'), carBrand.end());
-            getline(iss, vin, ',');
-            vin.erase(remove(vin.begin(), vin.end(), '\"'), vin.end());
-            getline(iss, addressOfObject, ',');
-            addressOfObject.erase(remove(addressOfObject.begin(), addressOfObject.end(), '\"'), addressOfObject.end());
-            getline(iss, universityName, ',');
-            universityName.erase(remove(universityName.begin(), universityName.end(), '\"'), universityName.end());
-            getline(iss, universityAddress, ',');
-            universityAddress.erase(remove(universityAddress.begin(), universityAddress.end(), '\"'), universityAddress.end());
-            getline(iss, type, ',');
-            getline(iss, type, ',');
-            getline(iss, type, ',');
-            iss >> id >> amount >> countOfMonth >> percent;
-            getline(iss, type, ',');
-            getline(iss, type, ',');
-            getline(iss, type, ',');
-            int bankId, bankNameLength, bankAddressLength;
-            iss >> bankId >> bankNameLength >> bankNameLength >> bankNameLength;
-            string bankName(bankNameLength, ' ');
-            iss >> bankName;
-            string bankAddress;
-            getline(iss, bankAddress, ',');
-            getline(iss, type, ',');
-            int borrowerId, firstNameLength, lastNameLength, dateOfBirthLength, passportNumberLength;
-            iss >> borrowerId >> firstNameLength >> lastNameLength >> dateOfBirthLength >> passportNumberLength;
-            string firstName(firstNameLength, ' ');
-            iss >> firstName;
-            string lastName;
-            getline(iss, lastName, ',');
-            lastName.erase(remove(lastName.begin(), lastName.end(), '\"'), lastName.end());
-            string dateOfBirth;
-            getline(iss, dateOfBirth, ',');
-            dateOfBirth.erase(remove(dateOfBirth.begin(), dateOfBirth.end(), '\"'), dateOfBirth.end());
-            string passportNumber;
-            getline(iss, passportNumber, ',');
-            passportNumber.erase(remove(passportNumber.begin(), passportNumber.end(), '\"'), passportNumber.end());
+            Bank bank;
+            Borrower borrower;
 
-            Bank bank(bankId, bankName, bankAddress);
-            Borrower borrower(borrowerId, firstName, lastName, dateOfBirth, passportNumber);
+            id = el["id"];
+            amount = el["amount"];
+            countOfMonth = el["countOfMonth"];
+            percent = el["percent"];
+            type = el["type"];
+            bank.id = el["bank"]["id"];
+            bank.name = el["bank"]["name"];
+            bank.address = el["bank"]["address"];
+            borrower.id = el["borrower"]["id"];
+            borrower.firstName = el["borrower"]["firstName"];
+            borrower.lastName = el["borrower"]["lastName"];
+            borrower.dateOfBirth = el["borrower"]["dateOfBirth"];
+            borrower.passportNumber = el["borrower"]["passportNumber"];
+            carModel = el["carModel"];
+            carBrand = el["carBrand"];
+            vin = el["vin"];
+            addressOfObject = el["addressOfObject"];
+            square = el["square"];
+            universityName = el["universityName"];
+            universityAddress = el["universityAddress"];
 
-            CreditContract contract(id, amount, countOfMonth,percent, type, bank, borrower, carModel, carBrand, vin, addressOfObject, 0, universityName, universityAddress);
+            CreditContract contract(id, amount, countOfMonth, percent, type, bank, borrower, carModel, carBrand, vin, addressOfObject, square, universityName, universityAddress);
             contracts.push_back(contract);
         }
-        file.close();
     }
 
     return contracts;
 }
 
+void writeCreditContractsToFile(const vector<CreditContract>& contracts, const string& filename) {
+    json j;
+
+    for (const auto& contract : contracts) {
+        json c;
+        c["id"] = contract.id;
+        c["amount"] = contract.amount;
+        c["countOfMonth"] = contract.countOfMonth;
+        c["percent"] = contract.percent;
+        c["type"] = contract.type;
+        c["bank"]["id"] = contract.bank.id;
+        c["bank"]["name"] = contract.bank.name;
+        c["bank"]["address"] = contract.bank.address;
+        c["borrower"]["id"] = contract.borrower.id;
+        c["borrower"]["firstName"] = contract.borrower.firstName;
+        c["borrower"]["lastName"] = contract.borrower.lastName;
+        c["borrower"]["dateOfBirth"] = contract.borrower.dateOfBirth;
+        c["borrower"]["passportNumber"] = contract.borrower.passportNumber;
+        c["carModel"] = contract.carModel;
+        c["carBrand"] = contract.carBrand;
+        c["vin"] = contract.vin;
+        c["addressOfObject"] = contract.addressOfObject;
+        c["square"] = contract.square;
+        c["universityName"] = contract.universityName;
+        c["universityAddress"] = contract.universityAddress;
+
+        j.push_back(c);
+    }
+
+    ofstream file(filename);
+    file << j.dump(4);
+}
+
 void displayCreditContract(const CreditContract& contract) {
-    cout << left << setw(10) << contract.id << setw(15) << contract.amount << setw(15) << contract.percent << setw(15) << contract.countOfMonth << setw(15) << contract.type << setw(20) << contract.bank.name << setw(20) << contract.borrower.lastName << " " << contract.borrower.firstName << endl;
+    cout << left << setw(10) << contract.id << setw(15) << contract.amount << setw(15) << contract.percent << setw(15) << contract.countOfMonth;
+
+    if (contract.type == "auto") {
+        cout << setw(15) << contract.type << setw(20) << contract.bank.name << setw(20) << contract.borrower.lastName << " " << contract.borrower.firstName << setw(15) << contract.carModel << setw(15) << contract.carBrand << setw(15) << contract.vin << endl;
+    } else if (contract.type == "mortgage") {
+        cout << setw(15) << contract.type << setw(20) << contract.bank.name << setw(20) << contract.borrower.lastName << " " << contract.borrower.firstName << setw(15) << contract.addressOfObject << setw(15) << contract.square << endl;
+    } else if (contract.type == "education") {
+        cout << setw(15) << contract.type << setw(20) << contract.bank.name << setw(20) << contract.borrower.lastName << " " << contract.borrower.firstName << setw(15) << contract.universityName << setw(15) << contract.universityAddress << endl;
+    }
 }
 
 void displayAllCreditContracts(const vector<CreditContract>& contracts) {
-    cout << "ID кредита | Сумма кредита | Процентная ставка | Срок кредита | Тип кредита | Наименование банка | Фамилия и Имя заемщика" << endl;
+    cout << "ID кредита | Сумма кредита | Процентная ставка | Срок кредита | Тип кредита | Наименование банка | Фамилия и Имя заемщика";
+
+    if (contracts[0].type == "auto") {
+        cout << setw(15) << "Модель авто" << setw(15) << "Марка авто" << setw(15) << "VIN код" << endl;
+    } else if (contracts[0].type == "mortgage") {
+        cout << setw(15) << "Адрес объекта" << setw(15) << "Площадь" << endl;
+    } else if (contracts[0].type == "education") {
+        cout << setw(15) << "Название университета" << setw(15) << "Адрес университета" << endl;
+    }
+
     for (const auto& contract : contracts) {
         displayCreditContract(contract);
     }
@@ -159,7 +190,16 @@ void displayCreditContractsByType(const vector<CreditContract>& contracts, const
         }
     }
 
-    cout << "ID кредита | Сумма кредита | Процентная ставка | Срок кредита | Тип кредита | Наименование банка | Фамилия и Имя заемщика" << endl;
+    cout << "ID кредита | Сумма кредита | Процентная ставка | Срок кредита | Тип кредита | Наименование банка | Фамилия и Имя заемщика";
+
+    if (filteredContracts[0].type == "auto") {
+        cout << setw(15) << "Модель авто" << setw(15) << "Марка авто" << setw(15) << "VIN код" << endl;
+    } else if (filteredContracts[0].type == "mortgage") {
+        cout << setw(15) << "Адрес объекта" << setw(15) << "Площадь" << endl;
+    } else if (filteredContracts[0].type == "education") {
+        cout << setw(15) << "Название университета" << setw(15) << "Адрес университета" << endl;
+    }
+
     for (const auto& contract : filteredContracts) {
         displayCreditContract(contract);
     }
@@ -173,7 +213,16 @@ void displayCreditContractsByBorrower(const vector<CreditContract>& contracts, c
         }
     }
 
-    cout << "ID кредита | Сумма кредита | Процентная ставка | Срок кредита | Тип кредита | Наименование банка | Фамилия и Имя заемщика" << endl;
+    cout << "ID кредита | Сумма кредита | Процентная ставка | Срок кредита | Тип кредита | Наименование банка | Фамилия и Имя заемщика";
+
+    if (filteredContracts[0].type == "auto") {
+        cout << setw(15) << "Модель авто" << setw(15) << "Марка авто" << setw(15) << "VIN код" << endl;
+    } else if (filteredContracts[0].type == "mortgage") {
+        cout << setw(15) << "Адрес объекта" << setw(15) << "Площадь" << endl;
+    } else if (filteredContracts[0].type == "education") {
+        cout << setw(15) <<"Название университета" << setw(15) << "Адрес университета" << endl;
+    }
+
     for (const auto& contract : filteredContracts) {
         displayCreditContract(contract);
     }
@@ -181,8 +230,11 @@ void displayCreditContractsByBorrower(const vector<CreditContract>& contracts, c
 
 CreditContract createNewCreditContract() {
     int id, countOfMonth;
-    double amount, percent;
+    double amount, percent,square;
     string type, carModel, carBrand, vin, addressOfObject, universityName, universityAddress;
+    Bank bank;
+    Borrower borrower;
+
     cout << "Enter ID: ";
     cin >> id;
     cout << "Enter amount: ";
@@ -191,25 +243,48 @@ CreditContract createNewCreditContract() {
     cin >> countOfMonth;
     cout << "Enter percent: ";
     cin >> percent;
-    cout << "Enter type: ";
+    cout << "Enter type (auto/mortgage/education): ";
     cin >> type;
-    cout << "Enter car model: ";
-    cin >> carModel;
-    cout << "Enter car brand: ";
-    cin >> carBrand;
-    cout << "Enter vin: ";
-    cin >> vin;
-    cout << "Enter address of object: ";
-    cin >> addressOfObject;
-    cout << "Enter university name: ";
-    cin >> universityName;
-    cout << "Enter university address: ";
-    cin >> universityAddress;
 
-    Bank bank;
-    Borrower borrower;
+    if (type == "auto") {
+        cout << "Enter car model: ";
+        cin >> carModel;
+        cout << "Enter car brand: ";
+        cin >> carBrand;
+        cout << "Enter VIN: ";
+        cin >> vin;
+    } else if (type == "mortgage") {
+        cout << "Enter address of object: ";
+        cin >> addressOfObject;
+        cout << "Enter square: ";
+        cin >> square;
+    } else if (type == "education") {
+        cout << "Enter university name: ";
+        cin >> universityName;
+        cout << "Enter university address: ";
+        cin >> universityAddress;
+    }
 
-    CreditContract contract(id, amount, countOfMonth, percent, type, bank, borrower, carModel, carBrand, vin, addressOfObject, 0, universityName, universityAddress);
+    cout << "Enter bank id: ";
+    cin >> bank.id;
+    cout << "Enter bank name: ";
+    cin.ignore();
+    getline(cin, bank.name);
+    cout << "Enter bank address: ";
+    getline(cin, bank.address);
+
+    cout << "Enter borrower id: ";
+    cin >> borrower.id;
+    cout << "Enter borrower first name: ";
+    cin >> borrower.firstName;
+    cout << "Enter borrower last name: ";
+    cin >> borrower.lastName;
+    cout << "Enter borrower date of birth: ";
+    cin >> borrower.dateOfBirth;
+    cout << "Enter borrower passport number: ";
+    cin >> borrower.passportNumber;
+
+    CreditContract contract(id, amount, countOfMonth, percent, type, bank, borrower, carModel, carBrand, vin, addressOfObject, square, universityName, universityAddress);
     return contract;
 }
 
@@ -253,10 +328,11 @@ int main() {
             string firstName;
             cin >> firstName;
             displayCreditContractsByBorrower(contracts, lastName, firstName);
-            break;
+           break;
         }
         case 6:
             contracts.push_back(createNewCreditContract());
+            writeCreditContractsToFile(contracts, "information.json");
             break;
         case 7: {
             cout << "Enter ID: ";
